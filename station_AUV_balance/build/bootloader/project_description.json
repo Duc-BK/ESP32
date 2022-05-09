@@ -1,0 +1,20 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/bootloader/subproject",
+    "build_dir":          "E:/MyProject/Embedded/ESP/station_AUV_balance_2/build/bootloader",
+    "config_file":        "E:/MyProject/Embedded/ESP/station_AUV_balance_2/sdkconfig",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "v4.2.2-dirty",
+    "target":             "esp32",
+    "phy_data_partition": "",
+    "monitor_baud" :      "115200",
+    "monitor_toolprefix": "xtensa-esp32-elf-",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/efuse/Kconfig;E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/esp32/Kconfig;E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/esp_common/Kconfig;E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/log/Kconfig;E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/bootloader/Kconfig.projbuild;E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/esptool_py/Kconfig.projbuild;E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "bootloader", "bootloader_support", "efuse", "esp32", "esp_common", "esp_rom", "esptool_py", "log", "main", "micro-ecc", "partition_table", "soc", "spi_flash", "xtensa", "" ],
+    "build_component_paths" : [ "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/bootloader", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/bootloader_support", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/efuse", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/esp32", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/esp_common", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/esp_rom", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/esptool_py", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/log", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/bootloader/subproject/main", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/bootloader/subproject/components/micro-ecc", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/partition_table", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/soc", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/spi_flash", "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/xtensa", "" ]
+}

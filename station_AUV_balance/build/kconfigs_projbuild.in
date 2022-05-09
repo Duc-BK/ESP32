@@ -1,0 +1,5 @@
+source "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/app_update/Kconfig.projbuild"
+source "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/bootloader/Kconfig.projbuild"
+source "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/esptool_py/Kconfig.projbuild"
+source "E:/MyProject/Embedded/ESP/esp-idf-v4.2.2/components/partition_table/Kconfig.projbuild"
+source "E:/MyProject/Embedded/ESP/station_AUV_balance_2/main/Kconfig.projbuild"

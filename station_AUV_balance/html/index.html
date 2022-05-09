@@ -1,0 +1,196 @@
+<!DOCTYPE HTML><html>
+<head>
+  <title>VIAMLAB-AUV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="icon" href="data:,">
+  <style>
+    html {font-family: Arial; display: inline-block; text-align: center;}
+    h1 {  font-size: 1.8rem;}
+    h2 {  font-size: 1.4rem;}
+    body {  margin: 0;}
+    .topnav { overflow: hidden; background-color: #2f4468; color: white; font-size: 1.2rem; }
+    .topnav2 { overflow: hidden; background-color: #d9d9d9; color: black; font-size: 1.0rem; }
+    .topnav3 { overflow: hidden; background-color: #d9d9d9; color: blue; font-size: 1.0rem; }
+    .content { padding: 20px; }
+    .card { background-color: white; box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5); }
+    .cards { max-width: 1500px; margin: 0 auto; display: grid; grid-gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .reading { font-size: 1.7rem; }
+    .timestamp { color: #bebebe; font-size: 1rem; }
+    .card-title{ font-size: 1.2rem; font-weight : bold; }
+    .card.priority { color: #B10F2E; }
+    .card.motor { color: #F9B603; }
+    .card.sensor { color: #50B8B4; }
+    .card.update { color: #000000; }
+    .card.blue {color: #4556f5; }
+    
+    .slider {
+  -webkit-appearance: none;
+  width: 90%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button_update {background-color: #4CAF50;} /* Green */
+  </style>
+</head>
+<body>
+  <div class="topnav">
+    <h1>AUV BALANCING</h1>
+  </div>
+  <div class="content">
+    <div class="cards">
+      <div class="card priority">
+        <p class="card-title"><i class="fas fa-cog"></i> Mode</p><p><span class="reading"><span id="operation_mode"></span></p>
+      </div>
+      <div class="card sensor">
+        <p class="card-title"><i class="fas fa-arrows-alt-v"></i> PITCH VALUE</p><p><span class="reading"><span id="pitch"></span>&deg</span></p>
+      </div>
+      <div class="card motor">
+        <p class="card-title"><i class="fas fa-arrow-left"></i><i class="fas fa-square"></i><i class="fas fa-arrow-right"></i> MASS SHIFTER POSITION</p>
+        <input type="range" min="-20" max="20" value="0" class="slider" id="mymass">
+        <p><span class="reading">tail <span id="mass_position"></span> head</p>
+      </div>
+      <div class="card motor">
+        <p class="card-title"><i class="fas fa-arrow-down"></i><i class="fas fa-water"></i> PISTOL</p>
+        <input type="range" min="0" max="1000" value="500" id = "mypis">
+        <p><span class="reading"><span id="pistol_position"></span> ml</span></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="topnav3">
+    <h2>Fuzzy Parameters</h2>
+  </div>
+  <div class="content">
+    <div class="cards">
+      <div class="card blue">
+        <p class="card-title">Setpoint</p>
+        <p><span class="reading"><span id="setpoint"></span>&deg</span></p>
+      </div>
+      <div class="card blue">
+        <p class="card-title">Error max</p>
+        <p><span class="reading"><span id="error_max"></span>&deg</span></p>
+      </div>
+      <div class="card blue">
+        <p class="card-title">Errordot max</p>
+        <p><span class="reading"><span id="errordot_max"></span>&deg</span></p>
+      </div>
+      <div class="card blue">
+        <p class="card-title">Offset max</p>
+        <p><span class="reading"><span id="offset_max"></span></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="topnav2">
+    <h2>Update Fuzzy Parameters</h2>
+  </div>
+  <div class="content">
+    <div class="cards">
+      <div class="card update">
+        <p class="card-title">Setpoint</p>
+        <h1><input type="text" id="setpoint_update" name="setpoint_update"></h1><br>
+      </div>
+      <div class="card update">
+        <p class="card-title">Error max</p>
+        <h1><input type="text" id="error_max_update" name="error_max_update"></h1><br>
+      </div>
+      <div class="card update">
+        <p class="card-title">Errordot max</p>
+        <h1><input type="text" id="errordot_max_update" name="errordot_max_update"></h1><br>
+      </div>
+      <div class="card update">
+        <p class="card-title">Offset max</p>
+        <h1><input type="text" id="offset_max_update" name="offset_max_update"></h1><br>
+      </div>
+    </div>
+  </div>
+  <button class="button button_update" id = "button" onclick = "function2()">Update</button>
+<script>
+
+var xhttp1 = new XMLHttpRequest();
+
+xhttp1.onreadystatechange = function()
+{
+    const obj = JSON.parse(this.responseText);
+
+    var element0 = document.getElementById('operation_mode');
+    element0.innerText = obj.mode;
+    var element1 = document.getElementById('mymass');
+    element1.value = obj.mass_position;
+    var element1_1 = document.getElementById('mass_position');
+    element1_1.innerText = obj.mass_position;
+    var element2 = document.getElementById('mypis');
+    element2.value = obj.pistol_position;
+    var element2_1 = document.getElementById('pistol_position');
+    element2_1.innerText =  obj.pistol_position;
+    var element3 = document.getElementById('pitch');
+    element3.innerText = obj.pitch_value;
+    var element4 = document.getElementById('error_max');
+    element4.innerText = obj.error;
+    var element5 = document.getElementById('errordot_max');
+    element5.innerText = obj.errordot;
+    var element6 = document.getElementById('offset_max');
+    element6.innerText = obj.offset;
+    var element7 = document.getElementById('setpoint');
+    element7.innerText = obj.setpoint;
+}
+
+setInterval(function(){
+  document.getElementById("button").style.backgroundColor = "#4CAF50";
+    xhttp1.open("GET", "/auv_update_data", true);
+    xhttp1.send();
+}, 120);
+
+function function2(){
+  document.getElementById("button").style.backgroundColor = "black";
+    var element_1 = document.getElementById('setpoint_update');
+    var element_2 = document.getElementById('error_max_update');
+    var element_3 = document.getElementById('errordot_max_update');
+    var element_4 = document.getElementById('offset_max_update');
+    xhttp1.open("POST", "/fuzzy_update", true);
+    xhttp1.send('A' + element_1.value + 'B' + element_2.value + 'C' + element_3.value + 'D' + element_4.value + 'E');
+}
+
+</script>
+</body>
+</html>
